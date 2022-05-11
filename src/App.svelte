@@ -1,10 +1,15 @@
 <script>
   import logo from './assets/svelte.png'
   import Counter from './lib/Counter.svelte'
+  import Router, {link} from 'svelte-spa-router';
+  import routes from './router/index.js'
 </script>
 
 <main>
-  <img src={logo} alt="Svelte Logo" />
+  <Router {routes} />
+  <a href="javascript;" class="font-medium text-xl underline text-red-400" use:link={'/list'}>To List</a>
+  <a href="javascript;" class="font-medium text-xl underline text-red-400" use:link={'/detail/1?name=finget'}>To Detail</a>
+  <!-- <img src={logo} alt="Svelte Logo" /> -->
   <h1>Hello world!</h1>
 
   <Counter />
