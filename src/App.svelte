@@ -3,12 +3,21 @@
   import Counter from './lib/Counter.svelte'
   import Router, {link} from 'svelte-spa-router';
   import routes from './router/index.js'
+  import Toasts from '@/components/Toast/Toasts.svelte';
+  import {addToast} from '@/components/Toast/toastStore.js';
+  const handleToast = () => {
+    addToast('hello world')
+  }
 </script>
 
 <main>
   <Router {routes} />
+  
   <a href="javascript;" class="font-medium text-xl underline text-red-400" use:link={'/list'}>To List</a>
   <a href="javascript;" class="font-medium text-xl underline text-red-400" use:link={'/detail/1?name=finget'}>To Detail</a>
+
+  <div class="p-4 bg-gray-600 w-1/2 rounded text-white mx-auto active:opacity-70" on:click={handleToast}>消息提示</div>
+  
   <!-- <img src={logo} alt="Svelte Logo" /> -->
   <h1>Hello world!</h1>
 
@@ -23,6 +32,7 @@
     Check out <a href="https://github.com/sveltejs/kit#readme">SvelteKit</a> for
     the officially supported framework, also powered by Vite!
   </p>
+  <Toasts/>
 </main>
 
 <style>
